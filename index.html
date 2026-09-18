@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TruthGraph</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+
+    <div class="logo">
+        <span class="logo-mark">◈</span>
+        TruthGraph
+    </div>
+
+    <nav>
+        <a href="#how-it-works">How it works</a>
+        <a href="#about">About</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+    <!-- INPUT SCREEN -->
+
+    <section id="input-screen" class="screen active">
+
+        <div class="hero">
+
+            <div class="badge">
+                AI-ASSISTED EVIDENCE ANALYSIS
+            </div>
+
+            <h1>
+                Don't just trust<br>
+                <span>the claim.</span>
+                Trace it.
+            </h1>
+
+            <p class="subtitle">
+                Analyze information by following the evidence,
+                sources and reasoning behind the verdict.
+            </p>
+
+
+            <div class="input-card">
+
+                <label for="claim-input">
+                    CLAIM TO VERIFY
+                </label>
+
+                <textarea
+                    id="claim-input"
+                    placeholder="Paste a claim from social media, an article, or anywhere else..."
+                ></textarea>
+
+                <div class="input-bottom">
+
+                    <span class="hint">
+                        Try: "Humans only use 10% of their brain."
+                    </span>
+
+                    <button id="analyze-btn">
+                        Analyze claim
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+            </div>
+
+            <p class="demo-note">
+                ✦ Demo mode uses a curated evidence dataset
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- LOADING SCREEN -->
+
+    <section id="loading-screen" class="screen">
+
+        <div class="loading-container">
+
+            <div class="loading-icon">
+                ◈
+            </div>
+
+            <h2>
+                Analyzing claim
+            </h2>
+
+            <p>
+                Tracing the available evidence...
+            </p>
+
+            <div class="steps">
+
+                <div class="step completed">
+                    <span>✓</span>
+                    Extracting claim
+                </div>
+
+                <div class="step completed">
+                    <span>✓</span>
+                    Identifying factual statements
+                </div>
+
+                <div class="step active-step">
+                    <span>●</span>
+                    Comparing evidence
+                </div>
+
+                <div class="step">
+                    <span>○</span>
+                    Checking sources
+                </div>
+
+                <div class="step">
+                    <span>○</span>
+                    Building evidence graph
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- RESULT SCREEN -->
+
+    <section id="result-screen" class="screen">
+
+        <div class="result-container">
+
+            <button id="back-btn" class="back-button">
+                ← New analysis
+            </button>
+
+
+            <!-- VERDICT -->
+
+            <div class="verdict-card">
+
+                <div class="verdict-top">
+
+                    <div>
+                        <div id="verdict-label" class="verdict-label">
+                            FALSE
+                        </div>
+
+                        <div id="confidence" class="confidence">
+                            94% confidence
+                        </div>
+                    </div>
+
+                    <div id="verdict-icon" class="verdict-icon">
+                        ✕
+                    </div>
+
+                </div>
+
+                <h2 id="result-claim">
+                    Humans only use 10% of their brain.
+                </h2>
+
+                <div class="divider"></div>
+
+                <h3>Why?</h3>
+
+                <p id="explanation">
+                    There is no credible scientific evidence supporting
+                    the claim that humans use only 10% of their brain.
+                    Neuroscience research demonstrates activity across
+                    many brain regions.
+                </p>
+
+            </div>
+
+
+            <!-- CLAIM BREAKDOWN -->
+
+            <section class="result-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-number">01</span>
+                        <h2>Claim breakdown</h2>
+                    </div>
+
+                    <span class="section-description">
+                        What exactly are we checking?
+                    </span>
+
+                </div>
+
+
+                <div id="claims-container" class="claims-container"></div>
+
+            </section>
+
+
+            <!-- EVIDENCE GRAPH -->
+
+            <section class="result-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-number">02</span>
+                        <h2>Evidence graph</h2>
+                    </div>
+
+                    <span class="section-description">
+                        Follow the reasoning
+                    </span>
+
+                </div>
+
+
+                <div class="graph-container">
+
+                    <div class="graph">
+
+                        <div class="graph-node claim-node">
+                            <span class="node-type">CLAIM</span>
+                            <strong id="graph-claim">
+                                10% brain usage
+                            </strong>
+                        </div>
+
+
+                        <div class="connection connection-one"></div>
+                        <div class="connection connection-two"></div>
+
+
+                        <div class="graph-node evidence-node node-left">
+
+                            <span class="node-status">✓</span>
+
+                            <span class="node-type">
+                                EVIDENCE
+                            </span>
+
+                            <strong>
+                                Neuroimaging
+                            </strong>
+
+                            <small>
+                                Contradicts claim
+                            </small>
+
+                        </div>
+
+
+                        <div class="graph-node evidence-node node-right">
+
+                            <span class="node-status">✓</span>
+
+                            <span class="node-type">
+                                EVIDENCE
+                            </span>
+
+                            <strong>
+                                Neuroscience
+                            </strong>
+
+                            <small>
+                                Contradicts claim
+                            </small>
+
+                        </div>
+
+
+                        <div class="connection connection-three"></div>
+                        <div class="connection connection-four"></div>
+
+
+                        <div class="graph-node conclusion-node">
+
+                            <span class="node-type">
+                                CONCLUSION
+                            </span>
+
+                            <strong>
+                                Evidence contradicts claim
+                            </strong>
+
+                        </div>
+
+
+                        <div class="connection connection-five"></div>
+
+
+                        <div class="graph-node verdict-node">
+
+                            <span>
+                                ✕
+                            </span>
+
+                            <strong>
+                                FALSE
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- SOURCES -->
+
+            <section class="result-section">
+
+                <div class="section-heading">
+
+                    <div>
+                        <span class="section-number">03</span>
+                        <h2>Sources</h2>
+                    </div>
+
+                    <span class="section-description">
+                        Evidence behind the analysis
+                    </span>
+
+                </div>
+
+
+                <div id="sources-container" class="sources-container"></div>
+
+            </section>
+
+
+            <!-- DISCLAIMER -->
+
+            <div class="disclaimer">
+
+                <span>ⓘ</span>
+
+                <p>
+                    TruthGraph assists with evidence analysis.
+                    It does not replace independent verification
+                    or professional fact-checking.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <span>TruthGraph © 2026</span>
+
+    <span>
+        Evidence over assumptions.
+    </span>
+
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
